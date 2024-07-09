@@ -1,25 +1,85 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35013.160
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan's Adventure", "Ryan's Adventure\Ryan's Adventure.csproj", "{16308AB1-B2C9-497E-AD8B-68E2903999F6}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16308AB1-B2C9-497E-AD8B-68E2903999F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16308AB1-B2C9-497E-AD8B-68E2903999F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16308AB1-B2C9-497E-AD8B-68E2903999F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16308AB1-B2C9-497E-AD8B-68E2903999F6}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3978A4B4-4507-4408-B5B5-C2432EB2DF84}
-	EndGlobalSection
-EndGlobal
+using System;
+
+namespace ChooseYourOwnAdventure
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /* THE MYSTERIOUS NOISE */
+
+            // Start by asking for the user's name:
+            Console.Write("What is your name?: ");
+            string name = Console.ReadLine();
+            Console.WriteLine($"Hello, {name}! Welcome to our story.");
+
+            // Start of story
+            Console.WriteLine("It begins on a cold rainy night. You're sitting in your room and hear a noise coming from down the hall. Do you go investigate?");
+            Console.WriteLine("Answer YES or NO");
+            string noiseChoice = Console.ReadLine();
+            string noiseChoiceLoud = noiseChoice.ToUpper();
+
+            if (noiseChoiceLoud == "NO")
+            {
+                Console.WriteLine("We can't have an adventure if we don't leave.");
+                Console.WriteLine("Game Over");
+            }
+            else if (noiseChoiceLoud == "YES")
+            {
+                Console.WriteLine("You walk into the hallway and see a light coming from under a door down the hall.");
+                Console.WriteLine("You walk towards it. Do you open it or knock?");
+                Console.WriteLine("Type OPEN or KNOCK");
+                string doorChoice = Console.ReadLine();
+                string doorChoiceLoud = doorChoice.ToUpper();
+
+                if (doorChoiceLoud == "KNOCK")
+                {
+                    Console.WriteLine("A voice behind the door speaks. It says, \"Answer this riddle: \"");
+                    Console.WriteLine("\"Poor people have it. Rich people need it. If you eat it you die. What is it?\"");
+                    Console.WriteLine("Type your answer:");
+                    string riddleAnswer = Console.ReadLine();
+                    string riddleAnswerLoud = riddleAnswer.ToUpper();
+
+                    if (riddleAnswerLoud == "NOTHING")
+                    {
+                        Console.WriteLine("The door opens and NOTHING is there.\nYou turn off the light and run back to your room and lock the door.\nTHE END.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You answered incorrectly. The door doesn't open.\nTHE END.");
+                    }
+                }
+                else if (doorChoiceLoud == "OPEN")
+                {
+                    Console.WriteLine("The door is locked! See if one of your three keys will open it.");
+                    Console.WriteLine("Enter a number (1-3):");
+                    string keyChoice = Console.ReadLine();
+
+                    switch (keyChoice)
+                    {
+                        case "1":
+                            Console.WriteLine("You choose the first key. Lucky choice!\nThe door opens and NOTHING is there. Strange...\nTHE END");
+                            break;
+                        case "2":
+                            Console.WriteLine("You choose the second key. The door doesn't open.\nTHE END.");
+                            break;
+                        case "3":
+                            Console.WriteLine("You choose the third key. The door doesn't open.\nTHE END.");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Key Choice.\nTHE END.");
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Game Over.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Game Over.");
+            }
+        }
+    }
+}
